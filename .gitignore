@@ -2,3 +2,4 @@ bin
 pkg
 src/*
 !src/guypj
+build/instrumenting/bundle.tar.gz
