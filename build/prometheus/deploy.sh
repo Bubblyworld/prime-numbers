@@ -12,6 +12,12 @@ if [[ ! $(docker network ls | grep guypj/instrumenting) ]]; then
   exit 1
 fi
 
+# Remove running/exited prometheus containers.
+docker ps -a | grep "prometheus" \
+             | cut -d " " -f 1 \
+             | (xargs docker stop) \
+             | (xargs docker rm)
+
 docker run \
   -p 9090:9090 \
   -v $dir:/config:ro \

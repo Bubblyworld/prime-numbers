@@ -35,6 +35,7 @@ func testPrimality(n, iteration int64, sleepFor time.Duration) (bool, int64) {
 
 		if iteration == 1000 {
 			time.Sleep(sleepFor)
+			iteration = 0
 		}
 
 		if isComposite {

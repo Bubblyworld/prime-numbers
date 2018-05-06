@@ -29,7 +29,7 @@ func registerMetrics() {
 func startThreads() {
 	for i := 0; i < 3; i++ {
 		threadLabel := fmt.Sprintf("thread_%d", i)
-		sleepFor := time.Millisecond * time.Duration(i*50)
+		sleepFor := time.Millisecond * time.Duration(i*50+50)
 
 		go prime.TestPrimalityForever(sleepFor, threadLabel)
 	}
@@ -42,6 +42,9 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	log.Println("Registering metrics.")
 	registerMetrics()
+
+	log.Println("Starting test threads.")
+	startThreads()
 
 	log.Println("Starting server on localhost:8080")
 	http.Handle("/", http.HandlerFunc(rootHandler))
