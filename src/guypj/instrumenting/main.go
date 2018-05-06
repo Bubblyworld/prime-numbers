@@ -35,11 +35,16 @@ func startThreads() {
 	}
 }
 
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("<html><body>Healthy.</body><html>"))
+}
+
 func main() {
 	log.Println("Registering metrics.")
 	registerMetrics()
 
 	log.Println("Starting server on localhost:8080")
+	http.Handle("/", http.HandlerFunc(rootHandler))
 	http.Handle("/metrics", promhttp.Handler())
-	http.ListenAndServe("localhost:8080", nil)
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
 }

@@ -18,4 +18,4 @@ docker ps -a | grep "guypj/instrumenting" \
 $dir/build.sh
 
 # Run docker container.
-docker run -d -p8080 guypj/instrumenting:latest
+docker run -p8080:8080 guypj/instrumenting:latest
