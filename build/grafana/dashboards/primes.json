@@ -16,7 +16,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
   "links": [],
   "panels": [
     {
@@ -65,7 +64,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": "15m",
+      "timeFrom": null,
       "timeShift": null,
       "title": "Total Integers Tested",
       "tooltip": {
@@ -153,7 +152,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": "15m",
+      "timeFrom": null,
       "timeShift": null,
       "title": "Total Primes Found",
       "tooltip": {
@@ -240,7 +239,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": "15m",
+      "timeFrom": null,
       "timeShift": null,
       "title": "Density of Primes",
       "tooltip": {
@@ -287,8 +286,8 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
-    "to": "now"
+    "from": "now-25m",
+    "to": "now-10m"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -317,6 +316,6 @@
   },
   "timezone": "",
   "title": "Prime Numbers",
-  "uid": null,
-  "version": 0
+  "uid": "vY243jGik",
+  "version": 1
 }
