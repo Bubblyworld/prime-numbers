@@ -24,6 +24,7 @@ import (
 
 func registerMetrics() {
 	prometheus.MustRegister(prime.IntegersTested)
+	prometheus.MustRegister(prime.PrimesFound)
 }
 
 func startThreads() {

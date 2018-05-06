@@ -6,17 +6,23 @@
 package prime
 
 import (
-	"log"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-// Metric for keeping track of how many integers have been tested per thread.
 var IntegersTested = prometheus.NewCounterVec(
 	prometheus.CounterOpts{
 		Name: "total_integers_tested",
 		Help: "Number of integers tested for primality.",
+	},
+	[]string{"thread"},
+)
+
+var PrimesFound = prometheus.NewCounterVec(
+	prometheus.CounterOpts{
+		Name: "total_primes_found",
+		Help: "Number of primes found.",
 	},
 	[]string{"thread"},
 )
@@ -58,7 +64,7 @@ func TestPrimalityForever(sleepFor time.Duration, threadLabel string) {
 		isPrime, iteration = testPrimality(n, iteration, sleepFor)
 
 		if isPrime {
-			log.Printf("%d is prime.\n", n)
+			PrimesFound.With(prometheus.Labels{"thread": threadLabel}).Inc()
 		}
 
 		IntegersTested.With(prometheus.Labels{"thread": threadLabel}).Inc()

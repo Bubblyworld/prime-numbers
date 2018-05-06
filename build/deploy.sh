@@ -15,4 +15,5 @@ if [[ ! $(docker network ls | grep guypj/instrumenting) ]]; then
 fi
 
 $dir/instrumenting/deploy.sh \
-  && $dir/prometheus/deploy.sh
+  && $dir/prometheus/deploy.sh \
+  && $dir/grafana/deploy.sh

@@ -24,7 +24,7 @@ docker ps -a | grep "guypj/instrumenting" \
 $dir/build.sh
 
 # Run docker container.
-docker run \
+docker run -d \
   -p 8080:8080 \
   --network guypj/instrumenting \
   --name instrumenting \

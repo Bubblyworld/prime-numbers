@@ -18,7 +18,7 @@ docker ps -a | grep "prometheus" \
              | (xargs docker stop) \
              | (xargs docker rm)
 
-docker run \
+docker run -d \
   -p 9090:9090 \
   -v $dir:/config:ro \
   --network guypj/instrumenting \
