@@ -1,4 +1,4 @@
-# Prime Number Monitior
+# Prime Number Monitor
 This project is a simple example of example of how to hook up [Grafana](https://grafana.com/) and [Prometheus](https://prometheus.io/) with [Docker](https://www.docker.com/) for monitoring and dashboarding containers. The core code is a server that spins up three threads, each of which iteratively tests integers for primality with trial division. Each thread is instrumented with Prometheus, and a dashboard is provided with Grafana that displays the resulting metrics and some derivatives.
 
 The server is written in [Go](https://golang.org/), and a build script cross-compiles it to a Linux AMD64 binary, which is in turn bundled into an [Alpine Linux](https://alpinelinux.org/) Docker container. The containers are deployed to a Docker bridge network, which handles DNS resolution very nicely.
