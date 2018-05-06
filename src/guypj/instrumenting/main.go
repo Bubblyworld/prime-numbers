@@ -13,6 +13,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -35,8 +36,10 @@ func startThreads() {
 }
 
 func main() {
+	log.Println("Registering metrics.")
 	registerMetrics()
 
+	log.Println("Starting server on localhost:8080")
 	http.Handle("/metrics", promhttp.Handler())
 	http.ListenAndServe("localhost:8080", nil)
 }

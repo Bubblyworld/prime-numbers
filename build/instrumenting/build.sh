@@ -1,9 +1,12 @@
 #!/bin/bash
 # Script to cross-compile the test source for linux-x86_64, and attach the
-# necessary bells and whistles for the docker image. Produces a .tar.gz
-# bundle at ./bundle.tar.gzip.
+# necessary bells and whistles for the docker image. Creates a docker image
+# tagged guypj/instrumenting:latest. At the moment only the linux executable
+# goes in the bundle, but for future projects we could add in credentials,
+# config files etcetera.
 #
 # This script should be run in the root directory of the repo.
+set -e
 dir=`pwd`/build/instrumenting
 file=bundle.tar.gz
 out=$dir/$file
@@ -25,5 +28,10 @@ fi
 if [[ -f $out ]]; then rm $out; fi
 (cd $dir && tar -czf $file *)
 
+# Generate the docker image.
+(cd $dir && docker build -t guypj/instrumenting:latest .)
+
 # Cleanup.
 rm $dir/instrumenting
+rm $out
+docker images | grep "<none>" | awk '{ print $3 }' | xargs docker image rm
